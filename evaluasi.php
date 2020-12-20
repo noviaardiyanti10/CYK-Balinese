@@ -15,16 +15,16 @@
     
     foreach($sentence as $kalimat){
 
-        $PecahStr = explode(" ",$kalimat);        
+        $string_pisah = explode(" ",$kalimat);        
 
         // deklasrasi variabel
         $data = [];    
         $index = 0;
 
         foreach ($pola_kata as $pola => $frasa_kata) {        
-            for ($i = $index; $i < count($PecahStr); $i++){
+            for ($i = $index; $i < count($string_pisah); $i++){
                 $status=false;
-                $kata = $PecahStr[$i];
+                $kata = $string_pisah[$i];
                 $k = $i+1;
                 do{
                     foreach ($frasa_kata as $frasa => $kelas_kata) {
@@ -45,11 +45,11 @@
                         if($status) break;
                     }
 
-                    if($k == count($PecahStr) || $status){
+                    if($k == count($string_pisah) || $status){
                         break;
                     }else
                     {
-                        $kata = $kata." ".$PecahStr[$k++];
+                        $kata = $kata." ".$string_pisah[$k++];
                     }
                 }while(!$status);
 
