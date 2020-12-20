@@ -1,7 +1,7 @@
 <?php 
 include 'index.php';
 // mengambil inputan
-	$teks = $_POST['grammar'];
+$teks = $_POST['grammar'];
 // memecah input berdasarkan spasi
 	$string_pisah = explode(" ",$teks);
 
@@ -91,6 +91,7 @@ if(array_search($result, $rules) == true){
 	$outputValid = true;
 }
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -112,19 +113,24 @@ if(array_search($result, $rules) == true){
             <div class=" table table-responsive" id="tbFix">
                 <table class="table table-bordered table-primary text-center">
                 <?php for($i=0;$i<count($data);$i++){
-                        if($i == 0)
-                            $count = array_count_values($data[0]);
-                        else
-                            $count = 1;
-                        echo "<tr>";
-                        for($j=0;$j<count($data[$i]);$j++){
+                    if($i == 0)
+                        $count = array_count_values($data[0]);
+                    else
+                        $count = 1;
+                    echo "<tr>";
+                    for($j=0;$j<count($data[$i]);$j++){
 
+                        //$jumlah = $count[$data[$i][$j]];
+                        if($i == 0){
                             $jumlah = $count[$data[$i][$j]];
-
-                            echo "<td colspan='".$jumlah."'>".$data[$i][$j]."</td>";
-                            if($i == 0)
-                                $j += $jumlah - 1;
+                        }else{
+                            $jumlah =1;
                         }
+
+                        echo "<td colspan='".$jumlah."'>".$data[$i][$j]."</td>";
+                        if($i == 0)
+                            $j += $jumlah - 1;
+        }
                         echo "</tr>";
                     } ?>
                 
